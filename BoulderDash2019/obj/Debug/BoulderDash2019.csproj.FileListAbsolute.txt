@@ -1,0 +1,9 @@
+C:\Users\admin\stack\School\Mod3\BoulderDash2019\BoulderDash2019\bin\Debug\BoulderDash2019.exe.config
+C:\Users\admin\stack\School\Mod3\BoulderDash2019\BoulderDash2019\bin\Debug\BoulderDash2019.exe
+C:\Users\admin\stack\School\Mod3\BoulderDash2019\BoulderDash2019\bin\Debug\BoulderDash2019.pdb
+C:\Users\admin\stack\School\Mod3\BoulderDash2019\BoulderDash2019\obj\Debug\BoulderDash2019.csprojResolveAssemblyReference.cache
+C:\Users\admin\stack\School\Mod3\BoulderDash2019\BoulderDash2019\obj\Debug\BoulderDash2019.exe
+C:\Users\admin\stack\School\Mod3\BoulderDash2019\BoulderDash2019\obj\Debug\BoulderDash2019.pdb
+C:\Users\admin\Desktop\Modelleren3\BoulderDash2019\BoulderDash2019\bin\Debug\BoulderDash2019.exe.config
+C:\Users\admin\Desktop\Modelleren3\BoulderDash2019\BoulderDash2019\obj\Debug\BoulderDash2019.exe
+C:\Users\admin\Desktop\Modelleren3\BoulderDash2019\BoulderDash2019\obj\Debug\BoulderDash2019.pdb
