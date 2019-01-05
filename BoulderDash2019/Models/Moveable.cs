@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace BoulderDash2019.Models
 {
-    class TileObject
+    public abstract class Moveable
     {
+        public Tile moveableOnTile;
+
+        public abstract char tile { get; }
     }
 }

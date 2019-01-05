@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace BoulderDash2019.Models
 {
-    class TNT : Moveable
+    class Steelwall : Moveable
     {
         public override char tile
         {
             get
             {
-                return 'T';
+                return 'S';
             }
         }
     }

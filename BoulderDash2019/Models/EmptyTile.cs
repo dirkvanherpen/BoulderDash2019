@@ -6,13 +6,22 @@ using System.Threading.Tasks;
 
 namespace BoulderDash2019.Models
 {
-    class TNT : Moveable
+    class EmptyTile : Tile
     {
+        public EmptyTile(int x, int y, Level level) : base(x, y, level)
+        {
+        }
+
         public override char tile
         {
             get
             {
-                return 'T';
+                if (moveable != null)
+                {
+                    return moveable.tile;
+                }
+
+                return ' ';
             }
         }
     }

@@ -14,7 +14,8 @@ namespace BoulderDash2019
     {
         static void Main(string[] args)
         {
-            LevelController.loadInfo();
+            LevelController levelcontroller = new LevelController();
+            levelcontroller.loadInfo();
         }
     }
 }

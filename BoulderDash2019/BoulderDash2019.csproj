@@ -44,16 +44,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\LevelController.cs" />
+    <Compile Include="Enum\Movement.cs" />
     <Compile Include="Level\LevelData.cs" />
     <Compile Include="Models\Boulder.cs" />
     <Compile Include="Models\Diamond.cs" />
+    <Compile Include="Models\EmptyTile.cs" />
     <Compile Include="Models\Firefly.cs" />
     <Compile Include="Models\HardenedMud.cs" />
     <Compile Include="Models\Level.cs" />
+    <Compile Include="Models\Moveable.cs" />
     <Compile Include="Models\Mud.cs" />
     <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\Steelwall.cs" />
     <Compile Include="Models\Tile.cs" />
-    <Compile Include="Models\TileObject.cs" />
     <Compile Include="Models\TNT.cs" />
     <Compile Include="Models\Wall.cs" />
     <Compile Include="Program.cs" />

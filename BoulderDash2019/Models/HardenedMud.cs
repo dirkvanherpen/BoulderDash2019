@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace BoulderDash2019.Models
 {
-    class HardenedMud
+    class HardenedMud : Moveable
     {
+        public override char tile
+        {
+            get
+            {
+                return 'H';
+            }
+        }
     }
 }
