@@ -10,3 +10,9 @@ C:\Users\admin\Desktop\Modelleren3\BoulderDash2019\BoulderDash2019\obj\Debug\Bou
 C:\Users\admin\Desktop\Modelleren3\BoulderDash2019\BoulderDash2019\bin\Debug\BoulderDash2019.exe
 C:\Users\admin\Desktop\Modelleren3\BoulderDash2019\BoulderDash2019\bin\Debug\BoulderDash2019.pdb
 C:\Users\admin\Desktop\Modelleren3\BoulderDash2019\BoulderDash2019\obj\Debug\BoulderDash2019.csprojResolveAssemblyReference.cache
+C:\Users\super\Documents\GitHub\BoulderDash2019\BoulderDash2019\bin\Debug\BoulderDash2019.exe.config
+C:\Users\super\Documents\GitHub\BoulderDash2019\BoulderDash2019\obj\Debug\BoulderDash2019.exe
+C:\Users\super\Documents\GitHub\BoulderDash2019\BoulderDash2019\obj\Debug\BoulderDash2019.pdb
+C:\Users\super\Documents\GitHub\BoulderDash2019\BoulderDash2019\bin\Debug\BoulderDash2019.exe
+C:\Users\super\Documents\GitHub\BoulderDash2019\BoulderDash2019\bin\Debug\BoulderDash2019.pdb
+C:\Users\super\Documents\GitHub\BoulderDash2019\BoulderDash2019\obj\Debug\BoulderDash2019.csprojResolveAssemblyReference.cache

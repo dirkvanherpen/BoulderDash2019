@@ -3,6 +3,10 @@
     public static int Level_width = 40;
     public static int Level_height = 22;
 
+    public static int Level1_timer = 150;
+    public static int Level2_timer = 150;
+    public static int Level3_timer = 999;
+
     public static char[,] Level1 = new char[22, 40]
     {
         { 'S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S' },
@@ -26,7 +30,7 @@
         { 'S','M','M','M','M','B','D','M','M',' ','M','M','M','M','M','M','M','M','B','M','M','M','M','M','M','B','M','B','D','M','M','M','M','M','M','B','M','M','M','S' },
         { 'S','M','M','M',' ','M','M',' ','M','B','M','M','B','M','B','B','M','M','M','M','T','M','M','M','M','B','M','B','D','M','M','M','M','M','M','B','M','M','B','S' },
         { 'S','M','D','M','M','M','M','B','M','M','M','M','M',' ','M','M','M','M','M','M','M','M','M',' ','M','B','M','M','B','M','M','M','M','B','M','M','M','B','M','S' },
-        { 'S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S' }
+        { 'S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S','S' },
     };
 
     public static char[,] Level2 = new char[22, 40]

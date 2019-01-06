@@ -14,10 +14,13 @@ namespace BoulderDash2019.Views
             Console.WriteLine("┌──────────────────────────────────────────────────────┐");
             Console.WriteLine("| Welkom bij BoulderDash                               |");
             Console.WriteLine("|                                                      |");
-            Console.WriteLine("| betekenis van de symbolen                            |");
+            Console.WriteLine("| Besturing:                                           |");
+            Console.WriteLine("| Pijltjes : Het besturen van Rockford                 |");
+            Console.WriteLine("| Spatie : Wacht een zet af                            |");
+            Console.WriteLine("|                                                      |");
+            Console.WriteLine("| Betekenis van de symbolen:                           |");
             Console.WriteLine("| S : Stalenmuur                                       |");
-            Console.WriteLine("| R : Rockford (Onze held),                            |");
-            Console.WriteLine("|    Die bestuur je met de pijltjes                    |");
+            Console.WriteLine("| R : Rockford (Onze held)                             |");
             Console.WriteLine("| M : Modder                                           |");
             Console.WriteLine("| B : Boulder                                          |");
             Console.WriteLine("| D : Diamand                                          |");

@@ -12,7 +12,8 @@ namespace BoulderDash2019.Models
         {
             get
             {
-                return 'B';
+                return (char)8709;
+                //return (char)9632;
             }
         }
     }

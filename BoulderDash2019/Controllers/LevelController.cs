@@ -22,6 +22,7 @@ namespace BoulderDash2019.Controllers
         GameView view = new GameView();
         private static bool exit = false;
         private static bool retry = false;
+        private static int timer;
 
         public void loadInfo() { 
             while (!exit)
@@ -57,16 +58,17 @@ namespace BoulderDash2019.Controllers
 
         public void loadLevel(int levelNumber)
         {
+            int moves = 0;
             switch (levelNumber)
             {
                 case 1:
-                    currentLevel = new Level(LevelData.Level1);
+                    currentLevel = new Level(LevelData.Level1, LevelData.Level1_timer);
                     break;
                 case 2:
-                    currentLevel = new Level(LevelData.Level2);
+                    currentLevel = new Level(LevelData.Level2, LevelData.Level2_timer);
                     break;
                 case 3:
-                    currentLevel = new Level(LevelData.Level3);
+                    currentLevel = new Level(LevelData.Level3, LevelData.Level3_timer);
                     break;
                 default:
                     break;
@@ -75,7 +77,7 @@ namespace BoulderDash2019.Controllers
             while (currentLevel.isFinished != true)
             {
                 renderLevel(currentLevel);
-
+                
                 var key = Console.ReadKey();
                 if (key != null)
                 {
@@ -83,18 +85,30 @@ namespace BoulderDash2019.Controllers
                     {
                         case ConsoleKey.LeftArrow:
                             currentLevel.rockford.Move(Movement.Left);
+                            moves++;
                             break;
                         case ConsoleKey.RightArrow:
                             currentLevel.rockford.Move(Movement.Right);
+                            moves++;
                             break;
                         case ConsoleKey.UpArrow:
                             currentLevel.rockford.Move(Movement.Up);
+                            moves++;
                             break;
                         case ConsoleKey.DownArrow:
                             currentLevel.rockford.Move(Movement.Down);
+                            moves++;
+                            break;
+                        case ConsoleKey.Spacebar:
+                            moves++;
                             break;
                         default:
                             break;
+                    }
+                    if (moves == 3)
+                    {
+                        currentLevel.levelTimer--;
+                        moves = 0;
                     }
                 }
             }
@@ -114,6 +128,8 @@ namespace BoulderDash2019.Controllers
                 }
                 Console.Write(tilechar.tile);
             }
+            Console.WriteLine();
+            Console.WriteLine("Points left: " + currentLevel.levelTimer);
         }
     }
 }

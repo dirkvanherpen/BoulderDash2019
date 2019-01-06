@@ -14,12 +14,14 @@ namespace BoulderDash2019.Models
         public int x;
         public int y;
         public Level level;
+        public int life;
 
-        public Tile(int x, int y, Level level)
+        public Tile(int x, int y, Level level, int life)
         {
             this.x = x;
             this.y = y;
             this.level = level;
+            this.life = life;
         }
     }
 }

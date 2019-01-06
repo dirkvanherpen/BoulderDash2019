@@ -8,11 +8,14 @@ namespace BoulderDash2019.Models
 {
     class HardenedMud : Moveable
     {
+        public HardenedMud(int life)
+        {
+        }
         public override char tile
         {
             get
             {
-                return 'H';
+                return (char)9618;
             }
         }
     }
