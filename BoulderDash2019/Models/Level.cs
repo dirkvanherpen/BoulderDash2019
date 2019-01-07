@@ -12,6 +12,7 @@ namespace BoulderDash2019.Models
         public bool isFinished { get; set; }
         public Player rockford;
         public int levelTimer;
+        public Boulder boulder;
 
         public Level(char[,] level, int levelTimer)
         {
@@ -32,17 +33,18 @@ namespace BoulderDash2019.Models
                             tile.moveable.moveableOnTile = tile;
                             break;
                         case 'M':
-                            tile = new EmptyTile(x, y, this, 0);
+                            tile = new EmptyTile(x, y, this, 1);
                             tile.moveable = new Mud();
                             tile.moveable.moveableOnTile = tile;
                             break;
                         case 'B':
-                            tile = new EmptyTile(x, y, this, 0);
+                            tile = new EmptyTile(x, y, this, 1);
                             tile.moveable = new Boulder();
+                            boulder = (Boulder)tile.moveable;
                             tile.moveable.moveableOnTile = tile;
                             break;
                         case 'D':
-                            tile = new EmptyTile(x, y, this, 0);
+                            tile = new EmptyTile(x, y, this, 1);
                             tile.moveable = new Diamond();
                             tile.moveable.moveableOnTile = tile;
                             break;
@@ -52,7 +54,7 @@ namespace BoulderDash2019.Models
                             tile.moveable.moveableOnTile = tile;
                             break;
                         case 'S':
-                            tile = new EmptyTile(x, y, this, 0);
+                            tile = new EmptyTile(x, y, this, 99);
                             tile.moveable = new Steelwall();
                             tile.moveable.moveableOnTile = tile;
                             break;

@@ -22,7 +22,6 @@ namespace BoulderDash2019.Controllers
         GameView view = new GameView();
         private static bool exit = false;
         private static bool retry = false;
-        private static int timer;
 
         public void loadInfo() { 
             while (!exit)
@@ -58,7 +57,6 @@ namespace BoulderDash2019.Controllers
 
         public void loadLevel(int levelNumber)
         {
-            int moves = 0;
             switch (levelNumber)
             {
                 case 1:
@@ -73,11 +71,33 @@ namespace BoulderDash2019.Controllers
                 default:
                     break;
             }
+            renderLevel(currentLevel);
+            gameFlow();          
+        }
 
+        public void renderLevel(Level currentLevel)
+        {
+            Console.Clear();
+            int y = 0;
+
+            foreach (var tilechar in currentLevel.tiles)
+            {
+                if (y != tilechar.y)
+                {
+                    Console.WriteLine();
+                    y++;
+                }
+                Console.Write(tilechar.tile);
+            }
+            Console.WriteLine();
+            Console.WriteLine("Points left: " + currentLevel.levelTimer);
+        }
+
+        public void gameFlow()
+        {
+            int moves = 0;
             while (currentLevel.isFinished != true)
             {
-                renderLevel(currentLevel);
-                
                 var key = Console.ReadKey();
                 if (key != null)
                 {
@@ -110,26 +130,15 @@ namespace BoulderDash2019.Controllers
                         currentLevel.levelTimer--;
                         moves = 0;
                     }
+                    moveBoulder(Movement.Down);
+                    renderLevel(currentLevel);
                 }
             }
         }
 
-        public void renderLevel(Level currentLevel)
+        public void moveBoulder(Movement movement)
         {
-            Console.Clear();
-            int y = 0;
-
-            foreach (var tilechar in currentLevel.tiles)
-            {
-                if (y != tilechar.y)
-                {
-                    Console.WriteLine();
-                    y++;
-                }
-                Console.Write(tilechar.tile);
-            }
-            Console.WriteLine();
-            Console.WriteLine("Points left: " + currentLevel.levelTimer);
+            currentLevel.boulder.Move(movement);
         }
     }
 }

@@ -53,6 +53,10 @@ namespace BoulderDash2019.Models
             {
                 return;
             }
+            else if (nextTile.moveable != null && nextTile.moveable.GetType() == typeof(Mud))
+            {
+                nextTile.life = 0; // Hier nog aan werken zodat boulders naar beneden vallen
+            }
             else if (nextTile.moveable != null && nextTile.moveable.GetType() == typeof(HardenedMud))
             {
                 if(nextTile.life == 0)
