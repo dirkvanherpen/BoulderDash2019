@@ -138,7 +138,7 @@ namespace BoulderDash2019.Controllers
 
         public void moveBoulder(Movement movement)
         {
-            currentLevel.boulder.Move(movement);
+            currentLevel.slideables.ForEach(slideable => slideable.Move(movement));
         }
     }
 }

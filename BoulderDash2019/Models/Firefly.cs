@@ -15,5 +15,9 @@ namespace BoulderDash2019.Models
                 return 'F';
             }
         }
+        public Firefly(int life)
+        {
+            this.life = life;
+        }
     }
 }

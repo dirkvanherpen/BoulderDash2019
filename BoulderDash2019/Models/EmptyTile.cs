@@ -8,7 +8,7 @@ namespace BoulderDash2019.Models
 {
     class EmptyTile : Tile
     {
-        public EmptyTile(int x, int y, Level level, int life) : base(x, y, level, life)
+        public EmptyTile(int x, int y, Level level) : base(x, y, level)
         {
         }
 

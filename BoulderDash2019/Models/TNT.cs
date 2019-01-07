@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BoulderDash2019.Models
 {
-    class TNT : Moveable
+    class TNT : Slideable
     {
         public override char tile
         {
@@ -14,6 +14,15 @@ namespace BoulderDash2019.Models
             {
                 return 'T';
             }
+        }
+        public TNT(int life, bool collision)
+        {
+            this.life = life;
+            this.collision = collision;
+        }
+        public override bool letSlide()
+        {
+            return true;
         }
     }
 }

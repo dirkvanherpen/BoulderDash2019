@@ -8,8 +8,10 @@ namespace BoulderDash2019.Models
 {
     class HardenedMud : Moveable
     {
-        public HardenedMud(int life)
+        public HardenedMud(int life, bool collision)
         {
+            this.life = life;
+            this.collision = collision;
         }
         public override char tile
         {

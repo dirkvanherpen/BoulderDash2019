@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BoulderDash2019.Models
 {
-    class Diamond : Moveable
+    class Diamond : Slideable
     {
         public override char tile
         {
@@ -14,6 +14,15 @@ namespace BoulderDash2019.Models
             {
                 return (char)9532;
             }
+        }
+        public Diamond(int life, bool collision)
+        {
+            this.life = life;
+            this.collision = collision;
+        }
+        public override bool letSlide()
+        {
+            return true;
         }
     }
 }

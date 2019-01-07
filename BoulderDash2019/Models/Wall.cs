@@ -15,5 +15,10 @@ namespace BoulderDash2019.Models
                 return (char)9619;
             }
         }
+        public Wall(int life, bool collision)
+        {
+            this.life = life;
+            this.collision = collision;
+        }
     }
 }
