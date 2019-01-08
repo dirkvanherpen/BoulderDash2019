@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BoulderDash2019.Models
 {
-    public class Player : Moveable
+    public class Player : Crushable
     {
 
         public override char tile
@@ -60,8 +60,12 @@ namespace BoulderDash2019.Models
             }
             
             nextTile.moveable = this;
-            moveableOnTile.moveable = new BlankTile(); 
+            moveableOnTile.moveable = new BlankTile(); // Aanpassen zodat boulders niet verwijderd worden
             moveableOnTile = nextTile;
+        }
+        public override bool letCrush()
+        {
+            return true;
         }
     }
 }

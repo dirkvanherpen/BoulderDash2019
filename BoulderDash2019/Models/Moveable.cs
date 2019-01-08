@@ -15,6 +15,14 @@ namespace BoulderDash2019.Models
         {
             return false;
         }
+        public virtual bool letCrush()
+        {
+            return false;
+        }
+        public virtual bool Crush()
+        {
+            return false;
+        }
 
         public abstract char tile { get; }
 

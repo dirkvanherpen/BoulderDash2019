@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BoulderDash2019.Models
 {
-    public class BlankTile : Moveable
+    public class BlankTile : Crushable
     {
         public override char tile
         {
@@ -15,6 +15,10 @@ namespace BoulderDash2019.Models
             {
                 return (char)'\0';
             }
+        }
+        public override bool letCrush()
+        {
+            return true;
         }
     }
 }

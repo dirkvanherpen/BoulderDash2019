@@ -98,6 +98,7 @@ namespace BoulderDash2019.Controllers
             int moves = 0;
             while (currentLevel.isFinished != true)
             {
+                moveBoulder(Movement.Down);
                 var key = Console.ReadKey();
                 if (key != null)
                 {
@@ -130,7 +131,6 @@ namespace BoulderDash2019.Controllers
                         currentLevel.levelTimer--;
                         moves = 0;
                     }
-                    moveBoulder(Movement.Down);
                     renderLevel(currentLevel);
                 }
             }

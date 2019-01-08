@@ -21,9 +21,11 @@ namespace BoulderDash2019.Models
             this.life = life;
             this.collision = collision;
         }
-
-        
         public override bool letSlide()
+        {
+            return true;
+        }
+        public override bool Crush()
         {
             return true;
         }
