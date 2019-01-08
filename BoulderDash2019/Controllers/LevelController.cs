@@ -95,10 +95,11 @@ namespace BoulderDash2019.Controllers
 
         public void gameFlow()
         {
+            List<Moveable> canMove = new List<Moveable> { };
             int moves = 0;
             while (currentLevel.isFinished != true)
-            {
-                moveBoulder(Movement.Down);
+            {                
+                checkMove(canMove);
                 var key = Console.ReadKey();
                 if (key != null)
                 {
@@ -107,21 +108,40 @@ namespace BoulderDash2019.Controllers
                         case ConsoleKey.LeftArrow:
                             currentLevel.rockford.Move(Movement.Left);
                             moves++;
+                            moveBoulder(canMove);
+                            canMove.Clear();
+                            renderLevel(currentLevel);
                             break;
                         case ConsoleKey.RightArrow:
                             currentLevel.rockford.Move(Movement.Right);
                             moves++;
+                            moveBoulder(canMove);
+                            canMove.Clear();
+                            renderLevel(currentLevel);
                             break;
                         case ConsoleKey.UpArrow:
                             currentLevel.rockford.Move(Movement.Up);
                             moves++;
+                            moveBoulder(canMove);
+                            canMove.Clear();
+                            renderLevel(currentLevel);
                             break;
                         case ConsoleKey.DownArrow:
                             currentLevel.rockford.Move(Movement.Down);
                             moves++;
+                            moveBoulder(canMove);
+                            canMove.Clear();
+                            renderLevel(currentLevel);
                             break;
                         case ConsoleKey.Spacebar:
                             moves++;
+                            moveBoulder(canMove);
+                            canMove.Clear();
+                            renderLevel(currentLevel);
+                            break;
+                        case ConsoleKey.S:
+                            Console.ReadKey();
+                            loadInfo();
                             break;
                         default:
                             break;
@@ -131,14 +151,30 @@ namespace BoulderDash2019.Controllers
                         currentLevel.levelTimer--;
                         moves = 0;
                     }
-                    renderLevel(currentLevel);
                 }
             }
         }
-
-        public void moveBoulder(Movement movement)
+        public void checkMove(List<Moveable> canMove)
         {
-            currentLevel.slideables.ForEach(slideable => slideable.Move(movement));
+            currentLevel.slideables.ForEach(slideable => slideable.checkMove(canMove));
+        }
+
+        public void moveBoulder(List<Moveable> canMove)
+        {
+            /*
+                 
+                Er moeteerst gechecked worden of de boulders kunnen bewegen, dan moet de speler bewegen, en daarna de boulders pas.
+                De dubbele for each moet hier natuurlijk weggehaalt worden anders gebeurt het te vaak
+                Naast dat moet voor elke moveable in canMove de functie: slideable.Move() uitgevoerd worden.
+                Echter weet ik niet hoe dit moet.
+                 
+            */
+
+            foreach (var y in canMove)
+            {
+                currentLevel.slideables.ForEach(slideable => slideable.Move());
+            }
+            //currentLevel.slideables.ForEach(slideable => slideable.Move());
         }
     }
 }

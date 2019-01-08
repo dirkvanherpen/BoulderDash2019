@@ -46,7 +46,7 @@
     <Compile Include="Controllers\LevelController.cs" />
     <Compile Include="Enum\Movement.cs" />
     <Compile Include="Level\LevelData.cs" />
-    <Compile Include="Models\BlankTile.cs" />
+    <Compile Include="Enum\BlankTile.cs" />
     <Compile Include="Models\Boulder.cs" />
     <Compile Include="Models\Crush.cs" />
     <Compile Include="Models\Crushable.cs" />
