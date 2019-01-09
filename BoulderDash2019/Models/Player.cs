@@ -10,8 +10,10 @@ namespace BoulderDash2019.Models
     public class Player : Crushable
     {
         public int diamonds = 0;
-        public int digY;
-        public int digX;
+        public bool exit = false;
+
+        public int removeTileX = -1;
+        public int removeTileY = -1;
 
         public override char tile
         {
@@ -65,23 +67,25 @@ namespace BoulderDash2019.Models
             {
                 return;
             }
-
-            if(!nextTile.moveable.Crush() && nextTile.moveable.letSlide())
+            else if (nextTile.moveable.GetType() == typeof(Exit))
             {
-                this.digX = nextTile.x;
-                this.digY = nextTile.y;
+                this.exit = true;
+            }
+
+            if (nextTile.moveable.GetType() == typeof(Diamond) || nextTile.moveable.GetType() == typeof(TNT))
+            {
+                removeTileX = nextTile.x;
+                removeTileY = nextTile.y;
             }
             else
             {
-                this.digX = -1;
-                this.digY = -1;
+                removeTileX = -1;
+                removeTileY = -1;
             }
             
             nextTile.moveable = this;
-            nextTile.moveable.letSlide();
             moveableOnTile.moveable = new BlankTile();
             moveableOnTile = nextTile;
-            
         }
         public override bool letCrush()
         {

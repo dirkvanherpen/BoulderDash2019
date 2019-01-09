@@ -54,6 +54,7 @@ namespace BoulderDash2019.Controllers
         }
 
         private Level currentLevel;
+        private int score { get; set; }
 
         public void loadLevel(int levelNumber)
         {
@@ -78,6 +79,7 @@ namespace BoulderDash2019.Controllers
         public void renderLevel(Level currentLevel)
         {
             Console.Clear();
+            score = (currentLevel.levelTimer + (currentLevel.rockford.diamonds * 10));
             int y = 0;
 
             foreach (var tilechar in currentLevel.tiles)
@@ -90,7 +92,8 @@ namespace BoulderDash2019.Controllers
                 Console.Write(tilechar.tile);
             }
             Console.WriteLine();
-            Console.WriteLine("Points left: " + currentLevel.levelTimer);
+            Console.WriteLine("Points left: " + score);
+            Console.WriteLine("Diamonds: " + currentLevel.rockford.diamonds + "/" + currentLevel.diamonds.Count());
         }
 
         public void gameFlow()
@@ -121,7 +124,6 @@ namespace BoulderDash2019.Controllers
                             break;
                         case ConsoleKey.UpArrow:
                             currentLevel.rockford.Move(Movement.Up);
-                            canMove.RemoveAll((x) => x.moveableOnTile.x == currentLevel.rockford.digX && x.moveableOnTile.y == currentLevel.rockford.digY);
                             moves++;
                             moveBoulder(canMove);
                             canMove.Clear();
@@ -147,20 +149,37 @@ namespace BoulderDash2019.Controllers
                         default:
                             break;
                     }
+
                     if (moves == 3)
                     {
                         currentLevel.levelTimer--;
                         moves = 0;
                     }
+                    if(currentLevel.rockford.removeTileX != -1 && currentLevel.rockford.removeTileY != -1)
+                    {
+                        var itemToRemove = currentLevel.slideables.Single(r => r.moveableOnTile.x == currentLevel.rockford.removeTileX && r.moveableOnTile.y == currentLevel.rockford.removeTileY);
+                        currentLevel.slideables.Remove(itemToRemove);
+                    }
                     if(currentLevel.diamonds.Count() <= currentLevel.rockford.diamonds)
                     {
+
                         /*
                          Laat de exit zien.
                          Probleem aanwezig is nogsteeds de volgorde van het vallen van boulders, tnt en diamonds waardoor je meer diamonds dan mogelijk kan halen
                          */
                     }
+                    if(currentLevel.rockford.exit == true)
+                    {
+                        currentLevel.isFinished = true;
+                    }
                 }
             }
+            EndView.EndScreen(score, true);
+
+            /*
+             implement:
+             level congrats screen met score en keys waardoor je naar het menu kan gaan (druk op ... om terug naar het menu te gaan)
+             */
         }
         public void checkMove(List<Slideable> canMove)
         {

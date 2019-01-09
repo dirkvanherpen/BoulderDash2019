@@ -17,7 +17,15 @@ namespace BoulderDash2019.Models
             {
                 if (moveableOnTile.moveable.Crush())
                 {
-                    // If nextTile == player { Die }
+                    if (nextTile.moveable.GetType() == typeof(Player))
+                    {
+                        Console.Clear();
+                        Console.WriteLine("death");
+                        Console.ReadLine();
+                    }
+                    nextTile.moveable = this;
+                    moveableOnTile.moveable = new BlankTile();
+                    moveableOnTile = nextTile;
                 }
                 else
                 {
@@ -36,7 +44,15 @@ namespace BoulderDash2019.Models
                 {
                     if (moveableOnTile.moveable.Crush())
                     {
-
+                        if (moveableOnTile.tileToLeft.moveable.GetType() == typeof(Player))
+                        {
+                            Console.Clear();
+                            Console.WriteLine("death");
+                            Console.ReadLine();
+                        }
+                        moveableOnTile.tileToLeft.moveable = this;
+                        moveableOnTile.moveable = new BlankTile();
+                        moveableOnTile = moveableOnTile.tileToLeft;
                     }
                     else
                     {
@@ -44,14 +60,21 @@ namespace BoulderDash2019.Models
                         moveableOnTile.tileToLeft.moveable = this;
                         moveableOnTile.moveable = new BlankTile();
                         moveableOnTile = moveableOnTile.tileToLeft;
-
                     }
                 }
                 else if (moveableOnTile.tileToRight.moveable.letCrush() && moveableOnTile.tileToRight.tileToBottom.moveable.letCrush())
                 {
                     if (moveableOnTile.moveable.Crush())
                     {
-
+                        if (moveableOnTile.tileToRight.moveable.GetType() == typeof(Player))
+                        {
+                            Console.Clear();
+                            Console.WriteLine("death");
+                            Console.ReadLine();
+                        }
+                        moveableOnTile.tileToRight.moveable = this;
+                        moveableOnTile.moveable = new BlankTile();
+                        moveableOnTile = moveableOnTile.tileToRight;
                     }
                     else
                     {
@@ -80,7 +103,14 @@ namespace BoulderDash2019.Models
             }
             else if ((nextTile.moveable.letSlide() && moveableOnTile.tileToLeft.moveable.letCrush() && moveableOnTile.tileToLeft.tileToBottom.moveable.letCrush()) || (nextTile.moveable.letSlide() && moveableOnTile.tileToRight.moveable.letCrush() && moveableOnTile.tileToRight.tileToBottom.moveable.letCrush()))
             {
-                slideable.Add(this);
+                if((moveableOnTile.moveable.Crush() == false) && (moveableOnTile.tileToLeft.moveable.GetType() == typeof(Player) || moveableOnTile.tileToRight.moveable.GetType() == typeof(Player)))
+                {
+
+                }
+                else
+                {
+                    slideable.Add(this);
+                }
             }
         }
     }
