@@ -19,11 +19,14 @@ namespace BoulderDash2019.Models
         {
             return false;
         }
-        public virtual bool Crush()
+        public virtual bool canCrush()
         {
             return false;
         }
-
+        public virtual bool canExplode()
+        {
+            return false;
+        }
         public abstract char tile { get; }
 
         public bool willCollide()

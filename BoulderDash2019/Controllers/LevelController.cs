@@ -100,6 +100,7 @@ namespace BoulderDash2019.Controllers
         {
             List<Slideable> canMove = new List<Slideable> { };
             int moves = 0;
+            char allTiles = '\0';
             while (currentLevel.isFinished != true)
             {                
                 checkMove(canMove);
@@ -110,37 +111,15 @@ namespace BoulderDash2019.Controllers
                     {
                         case ConsoleKey.LeftArrow:
                             currentLevel.rockford.Move(Movement.Left);
-                            moves++;
-                            moveBoulder(canMove);
-                            canMove.Clear();
-                            renderLevel(currentLevel);
                             break;
                         case ConsoleKey.RightArrow:
                             currentLevel.rockford.Move(Movement.Right);
-                            moves++;
-                            moveBoulder(canMove);
-                            canMove.Clear();
-                            renderLevel(currentLevel);
                             break;
                         case ConsoleKey.UpArrow:
                             currentLevel.rockford.Move(Movement.Up);
-                            moves++;
-                            moveBoulder(canMove);
-                            canMove.Clear();
-                            renderLevel(currentLevel);
                             break;
                         case ConsoleKey.DownArrow:
                             currentLevel.rockford.Move(Movement.Down);
-                            moves++;
-                            moveBoulder(canMove);
-                            canMove.Clear();
-                            renderLevel(currentLevel);
-                            break;
-                        case ConsoleKey.Spacebar:
-                            moves++;
-                            moveBoulder(canMove);
-                            canMove.Clear();
-                            renderLevel(currentLevel);
                             break;
                         case ConsoleKey.S:
                             Console.ReadKey();
@@ -150,19 +129,43 @@ namespace BoulderDash2019.Controllers
                             break;
                     }
 
+                    moves++;
+
                     if (moves == 3)
                     {
                         currentLevel.levelTimer--;
                         moves = 0;
                     }
-                    if(currentLevel.rockford.removeTileX != -1 && currentLevel.rockford.removeTileY != -1)
+                    if (currentLevel.rockford.removeTileX != -1 && currentLevel.rockford.removeTileY != -1)
                     {
                         var itemToRemove = currentLevel.slideables.Single(r => r.moveableOnTile.x == currentLevel.rockford.removeTileX && r.moveableOnTile.y == currentLevel.rockford.removeTileY);
                         currentLevel.slideables.Remove(itemToRemove);
                     }
-                    if(currentLevel.diamonds.Count() <= currentLevel.rockford.diamonds)
-                    {
 
+                    moveBoulder(canMove);
+                    canMove.Clear();
+
+
+                    /*
+                     * Is player nog op het veld?
+                     * zo niet dan ben je af 
+                     *  - 	Show de exit na het behalen van alle diamanten
+                        -	Wat gebeurt er als player op exit komt
+                        - 	Geef score en winst mee aan eindscherm
+                        -	Maak firefly met behaviour (eerst links vannuit de richting waar hij heen gaat)
+                     */
+                    //currentLevel.tiles.ForEach(tile =>)
+                    //foreach (var tilechar in currentLevel.tiles)
+                    //{
+                    //    allTiles += ToString(tilechar.tile);
+                    //}
+                    //if(allTiles.)
+
+
+
+
+                    if (currentLevel.diamonds.Count() <= currentLevel.rockford.diamonds)
+                    {
                         /*
                          Laat de exit zien.
                          Probleem aanwezig is nogsteeds de volgorde van het vallen van boulders, tnt en diamonds waardoor je meer diamonds dan mogelijk kan halen
@@ -172,13 +175,16 @@ namespace BoulderDash2019.Controllers
                     {
                         currentLevel.isFinished = true;
                     }
+
+                    renderLevel(currentLevel);
                 }
             }
+
             EndView.EndScreen(score, true);
 
             /*
              implement:
-             level congrats screen met score en keys waardoor je naar het menu kan gaan (druk op ... om terug naar het menu te gaan)
+             level congrats screen met score en keys waardoor je naar het menu kan gaan (druk op s om terug naar het menu te gaan)
              */
         }
         public void checkMove(List<Slideable> canMove)

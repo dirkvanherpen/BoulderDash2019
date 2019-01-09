@@ -20,5 +20,9 @@ namespace BoulderDash2019.Models
             this.life = life;
             this.collision = collision;
         }
+        public override bool canExplode()
+        {
+            return true;
+        }
     }
 }

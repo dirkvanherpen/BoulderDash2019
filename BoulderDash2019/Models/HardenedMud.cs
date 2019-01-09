@@ -20,5 +20,9 @@ namespace BoulderDash2019.Models
                 return (char)9618;
             }
         }
+        public override bool canExplode()
+        {
+            return true;
+        }
     }
 }

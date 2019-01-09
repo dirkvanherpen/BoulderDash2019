@@ -19,5 +19,9 @@ namespace BoulderDash2019.Models
         {
             this.life = life;
         }
+        public override bool canExplode()
+        {
+            return true;
+        }
     }
 }

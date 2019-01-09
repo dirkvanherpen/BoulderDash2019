@@ -73,7 +73,7 @@ namespace BoulderDash2019.Models
                             break;
                         case 'T':
                             tile = new EmptyTile(x, y, this);
-                            tile.moveable = new TNT(1, false);
+                            tile.moveable = new TNT(90, false);
                             slideables.Add((Slideable)tile.moveable);
                             tile.moveable.moveableOnTile = tile;
                             break;
