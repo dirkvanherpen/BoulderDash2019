@@ -95,7 +95,7 @@ namespace BoulderDash2019.Controllers
 
         public void gameFlow()
         {
-            List<Moveable> canMove = new List<Moveable> { };
+            List<Slideable> canMove = new List<Slideable> { };
             int moves = 0;
             while (currentLevel.isFinished != true)
             {                
@@ -121,6 +121,7 @@ namespace BoulderDash2019.Controllers
                             break;
                         case ConsoleKey.UpArrow:
                             currentLevel.rockford.Move(Movement.Up);
+                            canMove.RemoveAll((x) => x.moveableOnTile.x == currentLevel.rockford.digX && x.moveableOnTile.y == currentLevel.rockford.digY);
                             moves++;
                             moveBoulder(canMove);
                             canMove.Clear();
@@ -151,30 +152,24 @@ namespace BoulderDash2019.Controllers
                         currentLevel.levelTimer--;
                         moves = 0;
                     }
+                    if(currentLevel.diamonds.Count() <= currentLevel.rockford.diamonds)
+                    {
+                        /*
+                         Laat de exit zien.
+                         Probleem aanwezig is nogsteeds de volgorde van het vallen van boulders, tnt en diamonds waardoor je meer diamonds dan mogelijk kan halen
+                         */
+                    }
                 }
             }
         }
-        public void checkMove(List<Moveable> canMove)
+        public void checkMove(List<Slideable> canMove)
         {
             currentLevel.slideables.ForEach(slideable => slideable.checkMove(canMove));
         }
 
-        public void moveBoulder(List<Moveable> canMove)
-        {
-            /*
-                 
-                Er moeteerst gechecked worden of de boulders kunnen bewegen, dan moet de speler bewegen, en daarna de boulders pas.
-                De dubbele for each moet hier natuurlijk weggehaalt worden anders gebeurt het te vaak
-                Naast dat moet voor elke moveable in canMove de functie: slideable.Move() uitgevoerd worden.
-                Echter weet ik niet hoe dit moet.
-                 
-            */
-
-            foreach (var y in canMove)
-            {
-                currentLevel.slideables.ForEach(slideable => slideable.Move());
-            }
-            //currentLevel.slideables.ForEach(slideable => slideable.Move());
+        public void moveBoulder(List<Slideable> canMove)
+        {            
+            canMove.ForEach(slideable => slideable.Move());
         }
     }
 }

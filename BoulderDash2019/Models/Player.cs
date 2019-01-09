@@ -9,6 +9,9 @@ namespace BoulderDash2019.Models
 {
     public class Player : Crushable
     {
+        public int diamonds = 0;
+        public int digY;
+        public int digX;
 
         public override char tile
         {
@@ -42,7 +45,7 @@ namespace BoulderDash2019.Models
 
             var nextTile = moveableOnTile.level.tiles.Find(tile => tile.x == newx && tile.y == newy);
 
-            if(nextTile.moveable.GetType() == typeof(HardenedMud))
+            if (nextTile.moveable.GetType() == typeof(HardenedMud))
             {
                 if (nextTile.moveable.life == 1)
                 {
@@ -54,14 +57,31 @@ namespace BoulderDash2019.Models
                     return;
                 }
             }
+            else if (nextTile.moveable.GetType() == typeof(Diamond))
+            {
+                this.diamonds++;
+            }
             else if (nextTile.moveable.willCollide())
             {
                 return;
             }
+
+            if(!nextTile.moveable.Crush() && nextTile.moveable.letSlide())
+            {
+                this.digX = nextTile.x;
+                this.digY = nextTile.y;
+            }
+            else
+            {
+                this.digX = -1;
+                this.digY = -1;
+            }
             
             nextTile.moveable = this;
-            moveableOnTile.moveable = new BlankTile(); // Aanpassen zodat boulders niet verwijderd worden
+            nextTile.moveable.letSlide();
+            moveableOnTile.moveable = new BlankTile();
             moveableOnTile = nextTile;
+            
         }
         public override bool letCrush()
         {

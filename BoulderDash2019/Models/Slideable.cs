@@ -11,47 +11,76 @@ namespace BoulderDash2019.Models
     {
         public void Move()
         {
-            // Only code for falling down
             var nextTile = moveableOnTile.level.tiles.Find(tile => tile.x == moveableOnTile.x && tile.y == moveableOnTile.y + 1);
 
-            if (nextTile.moveable.letCrush())//nextTile.moveable.GetType() == typeof(BlankTile))
+            if (nextTile.moveable.letCrush())
             {
                 if (moveableOnTile.moveable.Crush())
                 {
-                    
                     // If nextTile == player { Die }
                 }
-                nextTile.moveable = this;
-                moveableOnTile.moveable = new BlankTile();
-                moveableOnTile = nextTile;
+                else
+                {
+                    // Voor alles behalve boulders
+                    if(nextTile.moveable.GetType() != typeof(Player))
+                    {
+                        nextTile.moveable = this;
+                        moveableOnTile.moveable = new BlankTile();
+                        moveableOnTile = nextTile;
+                    }
+                }
             }
             else if (nextTile.moveable.letSlide())
             {
                if (moveableOnTile.tileToLeft.moveable.letCrush() && moveableOnTile.tileToLeft.tileToBottom.moveable.letCrush())
                 {
-                    moveableOnTile.tileToLeft.moveable = this;
-                    moveableOnTile.moveable = new BlankTile();
-                    moveableOnTile = moveableOnTile.tileToLeft;
+                    if (moveableOnTile.moveable.Crush())
+                    {
+
+                    }
+                    else
+                    {
+                        // Voor alles behalve boulders
+                        moveableOnTile.tileToLeft.moveable = this;
+                        moveableOnTile.moveable = new BlankTile();
+                        moveableOnTile = moveableOnTile.tileToLeft;
+
+                    }
                 }
                 else if (moveableOnTile.tileToRight.moveable.letCrush() && moveableOnTile.tileToRight.tileToBottom.moveable.letCrush())
                 {
-                    moveableOnTile.tileToRight.moveable = this;
-                    moveableOnTile.moveable = new BlankTile();
-                    moveableOnTile = moveableOnTile.tileToRight;
+                    if (moveableOnTile.moveable.Crush())
+                    {
+
+                    }
+                    else
+                    {
+                        // Voor alles behalve boulders
+                        moveableOnTile.tileToRight.moveable = this;
+                        moveableOnTile.moveable = new BlankTile();
+                        moveableOnTile = moveableOnTile.tileToRight;
+                    }
                 }
             }
         }
-        public void checkMove(List<Moveable> Moveable)
+        public void checkMove(List<Slideable> slideable)
         {
             var nextTile = moveableOnTile.level.tiles.Find(tile => tile.x == moveableOnTile.x && tile.y == moveableOnTile.y + 1);
 
             if (nextTile.moveable.letCrush())
             {
-                Moveable.Add(moveableOnTile.moveable);                
+                if(!moveableOnTile.moveable.Crush() && nextTile.moveable.GetType() == typeof(Player))
+                {
+                    // Als de moveable geen boulder (Crush) is en het volgende vakje de player voegt hij hem niet toe anders wel
+                    
+                } else
+                {
+                    slideable.Add(this);
+                }     
             }
-            else if (nextTile.moveable.letSlide())
+            else if ((nextTile.moveable.letSlide() && moveableOnTile.tileToLeft.moveable.letCrush() && moveableOnTile.tileToLeft.tileToBottom.moveable.letCrush()) || (nextTile.moveable.letSlide() && moveableOnTile.tileToRight.moveable.letCrush() && moveableOnTile.tileToRight.tileToBottom.moveable.letCrush()))
             {
-                Moveable.Add(moveableOnTile.moveable);
+                slideable.Add(this);
             }
         }
     }

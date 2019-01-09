@@ -52,6 +52,7 @@
     <Compile Include="Models\Crushable.cs" />
     <Compile Include="Models\Diamond.cs" />
     <Compile Include="Models\EmptyTile.cs" />
+    <Compile Include="Models\Exit.cs" />
     <Compile Include="Models\Firefly.cs" />
     <Compile Include="Models\HardenedMud.cs" />
     <Compile Include="Models\Level.cs" />

@@ -13,6 +13,7 @@ namespace BoulderDash2019.Models
         public Player rockford;
         public int levelTimer;
         public List<Slideable> slideables = new List<Slideable>();
+        public List<Slideable> diamonds = new List<Slideable>();
 
         public Level(char[,] level, int levelTimer)
         {
@@ -47,6 +48,7 @@ namespace BoulderDash2019.Models
                             tile = new EmptyTile(x, y, this);
                             tile.moveable = new Diamond(1, false);
                             slideables.Add((Slideable)tile.moveable);
+                            diamonds.Add((Slideable)tile.moveable);
                             tile.moveable.moveableOnTile = tile;
                             break;
                         case 'W':
@@ -73,6 +75,11 @@ namespace BoulderDash2019.Models
                             tile = new EmptyTile(x, y, this);
                             tile.moveable = new TNT(1, false);
                             slideables.Add((Slideable)tile.moveable);
+                            tile.moveable.moveableOnTile = tile;
+                            break;
+                        case 'E':
+                            tile = new EmptyTile(x, y, this);
+                            tile.moveable = new Exit();
                             tile.moveable.moveableOnTile = tile;
                             break;
                         default:
