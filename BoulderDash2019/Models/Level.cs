@@ -14,6 +14,7 @@ namespace BoulderDash2019.Models
         public int levelTimer;
         public List<Slideable> slideables = new List<Slideable>();
         public List<Slideable> diamonds = new List<Slideable>();
+        public List<Moveable> fireflies = new List<Moveable>();
 
         public Level(char[,] level, int levelTimer)
         {
@@ -63,7 +64,8 @@ namespace BoulderDash2019.Models
                             break;
                         case 'F':
                             tile = new EmptyTile(x, y, this);
-                            tile.moveable = new Firefly(1);
+                            tile.moveable = new Firefly(1, "up"); 
+                            fireflies.Add((Moveable)tile.moveable);
                             tile.moveable.moveableOnTile = tile;
                             break;
                         case 'H':

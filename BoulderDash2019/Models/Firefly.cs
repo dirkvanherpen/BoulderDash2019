@@ -15,11 +15,16 @@ namespace BoulderDash2019.Models
                 return 'F';
             }
         }
-        public Firefly(int life)
+        public Firefly(int life, string direction)
         {
             this.life = life;
+            this.direction = direction;
         }
         public override bool canExplode()
+        {
+            return true;
+        }
+        public override bool letCrush()
         {
             return true;
         }

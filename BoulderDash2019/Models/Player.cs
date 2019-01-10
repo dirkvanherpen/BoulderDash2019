@@ -80,7 +80,7 @@ namespace BoulderDash2019.Models
             }
             
             
-            if (nextTile.moveable.GetType() != typeof(Exit))
+            if (nextTile.moveable.GetType() != typeof(Exit) && nextTile.moveable.GetType() != typeof(Firefly))
             {
                 this.exit = false;
                 nextTile.moveable = this;

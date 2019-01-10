@@ -10,6 +10,7 @@ namespace BoulderDash2019.Models
     {
         public Tile moveableOnTile;
         public int life;
+        public string direction;
         protected bool collision;
         public virtual bool letSlide()
         {
@@ -28,6 +29,72 @@ namespace BoulderDash2019.Models
             return false;
         }
         public abstract char tile { get; }
+
+        public void MoveFlies()
+        {
+            bool didMove = false;
+            while (!didMove)
+            {
+                switch (moveableOnTile.moveable.direction)
+                {
+                    case "up":
+                        if (moveableOnTile.tileToLeft.moveable.letCrush()) { MoveLeft(); }
+                        else if (moveableOnTile.tileToTop.moveable.letCrush()) { MoveUp(); }
+                        else if (moveableOnTile.tileToRight.moveable.letCrush()) { MoveRight(); }
+                        else { MoveDown(); }
+                        didMove = true;
+                        break;
+                    case "left":
+                        if (moveableOnTile.tileToBottom.moveable.letCrush()) { MoveDown(); }
+                        else if (moveableOnTile.tileToLeft.moveable.letCrush()) { MoveLeft(); }
+                        else if (moveableOnTile.tileToTop.moveable.letCrush()) { MoveUp(); }
+                        else { MoveRight(); }
+                        didMove = true;
+                        break;
+                    case "right":
+                        if (moveableOnTile.tileToTop.moveable.letCrush()) { MoveUp(); }
+                        else if (moveableOnTile.tileToRight.moveable.letCrush()) { MoveRight(); }
+                        else if (moveableOnTile.tileToBottom.moveable.letCrush()) { MoveDown(); }
+                        else { MoveLeft(); }
+                        didMove = true;
+                        break;
+                    case "down":
+                        if (moveableOnTile.tileToRight.moveable.letCrush()) { MoveRight(); }
+                        else if (moveableOnTile.tileToBottom.moveable.letCrush()) { MoveDown(); }
+                        else if (moveableOnTile.tileToLeft.moveable.letCrush()) { MoveLeft(); }
+                        else { MoveUp(); }
+                        didMove = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        public void MoveLeft() {
+            moveableOnTile.tileToLeft.moveable = this;
+            moveableOnTile.moveable = new BlankTile();
+            moveableOnTile = moveableOnTile.tileToLeft;
+            moveableOnTile.moveable.direction = "left";
+        }
+        public void MoveUp() {
+            moveableOnTile.tileToTop.moveable = this;
+            moveableOnTile.moveable = new BlankTile();
+            moveableOnTile = moveableOnTile.tileToTop;
+            moveableOnTile.moveable.direction = "up";
+        }
+        public void MoveRight() {
+            moveableOnTile.tileToRight.moveable = this;
+            moveableOnTile.moveable = new BlankTile();
+            moveableOnTile = moveableOnTile.tileToRight;
+            moveableOnTile.moveable.direction = "right";
+        }
+        public void MoveDown() {
+            moveableOnTile.tileToBottom.moveable = this;
+            moveableOnTile.moveable = new BlankTile();
+            moveableOnTile = moveableOnTile.tileToBottom;
+            moveableOnTile.moveable.direction = "down";
+        }
 
         public bool willCollide()
         {

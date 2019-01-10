@@ -155,13 +155,17 @@ namespace BoulderDash2019.Controllers
                         currentLevel.slideables.Remove(itemToRemove);
                     }
 
-                    moveBoulder(canMove, canSlide);
-                    canMove.Clear();
-                    canSlide.Clear();
 
                     /*
                      *  -	Maak firefly met behaviour (eerst links vannuit de richting waar hij heen gaat)
                      */
+
+                    moveFireflies();
+
+                    moveBoulder(canMove, canSlide);
+                    canMove.Clear();
+                    canSlide.Clear();
+
                      
                     foreach (var tilechar in currentLevel.tiles)
                     {
@@ -193,6 +197,10 @@ namespace BoulderDash2019.Controllers
         {            
             canMove.ForEach(slideable => slideable.Move());
             canSlide.ForEach(slideable => slideable.Slide());
+        }
+        public void moveFireflies()
+        {
+            currentLevel.fireflies.ForEach(firefly => firefly.MoveFlies());
         }
     }
 }
