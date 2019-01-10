@@ -22,6 +22,8 @@ namespace BoulderDash2019.Controllers
         GameView view = new GameView();
         private static bool exit = false;
         private static bool retry = false;
+        private int score { get; set; }
+        private bool result { get; set; }
 
         public void loadInfo() { 
             while (!exit)
@@ -30,9 +32,9 @@ namespace BoulderDash2019.Controllers
                 GameView.startInfo();
 
                 if (retry) { Console.WriteLine("Vul een geldige input in!"); }
-                var result = Console.ReadLine().ToLower();
+                var input = Console.ReadLine().ToLower();
 
-                switch (result)
+                switch (input)
                 {
                     case "s":
                         Environment.Exit(0);
@@ -50,11 +52,11 @@ namespace BoulderDash2019.Controllers
                         retry = true;
                         break;
                 }
+             
             }
         }
 
         private Level currentLevel;
-        private int score { get; set; }
 
         public void loadLevel(int levelNumber)
         {
@@ -73,7 +75,17 @@ namespace BoulderDash2019.Controllers
                     break;
             }
             renderLevel(currentLevel);
-            gameFlow();          
+            gameFlow();
+
+            if (result)
+            {
+                EndView.EndScreenVictory(score);
+            }
+            else
+            {
+                EndView.EndScreenDefeat();
+            }
+            Console.ReadLine();
         }
 
         public void renderLevel(Level currentLevel)
@@ -99,11 +111,12 @@ namespace BoulderDash2019.Controllers
         public void gameFlow()
         {
             List<Slideable> canMove = new List<Slideable> { };
+            List<Slideable> canSlide = new List<Slideable> { };
             int moves = 0;
-            char allTiles = '\0';
+            string allTiles = "";
             while (currentLevel.isFinished != true)
             {                
-                checkMove(canMove);
+                checkMove(canMove, canSlide);
                 var key = Console.ReadKey();
                 if (key != null)
                 {
@@ -142,59 +155,44 @@ namespace BoulderDash2019.Controllers
                         currentLevel.slideables.Remove(itemToRemove);
                     }
 
-                    moveBoulder(canMove);
+                    moveBoulder(canMove, canSlide);
                     canMove.Clear();
-
+                    canSlide.Clear();
 
                     /*
-                     * Is player nog op het veld?
-                     * zo niet dan ben je af 
-                     *  - 	Show de exit na het behalen van alle diamanten
-                        -	Wat gebeurt er als player op exit komt
-                        - 	Geef score en winst mee aan eindscherm
-                        -	Maak firefly met behaviour (eerst links vannuit de richting waar hij heen gaat)
+                     *  -	Maak firefly met behaviour (eerst links vannuit de richting waar hij heen gaat)
                      */
-                    //currentLevel.tiles.ForEach(tile =>)
-                    //foreach (var tilechar in currentLevel.tiles)
-                    //{
-                    //    allTiles += ToString(tilechar.tile);
-                    //}
-                    //if(allTiles.)
-
-
-
-
-                    if (currentLevel.diamonds.Count() <= currentLevel.rockford.diamonds)
+                     
+                    foreach (var tilechar in currentLevel.tiles)
                     {
-                        /*
-                         Laat de exit zien.
-                         Probleem aanwezig is nogsteeds de volgorde van het vallen van boulders, tnt en diamonds waardoor je meer diamonds dan mogelijk kan halen
-                         */
+                        allTiles += tilechar.tile;
                     }
-                    if(currentLevel.rockford.exit == true)
+                    if (!allTiles.ToLower().Contains('r'))
                     {
                         currentLevel.isFinished = true;
+                        result = false;
+                    }
+                    allTiles = "";
+
+                    if (currentLevel.diamonds.Count() <= currentLevel.rockford.diamonds && currentLevel.rockford.exit == true)
+                    {
+                        currentLevel.isFinished = true;
+                        result = true;
                     }
 
                     renderLevel(currentLevel);
                 }
             }
-
-            EndView.EndScreen(score, true);
-
-            /*
-             implement:
-             level congrats screen met score en keys waardoor je naar het menu kan gaan (druk op s om terug naar het menu te gaan)
-             */
         }
-        public void checkMove(List<Slideable> canMove)
+        public void checkMove(List<Slideable> canMove, List<Slideable> canSlide)
         {
-            currentLevel.slideables.ForEach(slideable => slideable.checkMove(canMove));
+            currentLevel.slideables.ForEach(slideable => slideable.checkMove(canMove, canSlide));
         }
 
-        public void moveBoulder(List<Slideable> canMove)
+        public void moveBoulder(List<Slideable> canMove, List<Slideable> canSlide)
         {            
             canMove.ForEach(slideable => slideable.Move());
+            canSlide.ForEach(slideable => slideable.Slide());
         }
     }
 }

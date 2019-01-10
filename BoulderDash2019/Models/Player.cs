@@ -67,10 +67,6 @@ namespace BoulderDash2019.Models
             {
                 return;
             }
-            else if (nextTile.moveable.GetType() == typeof(Exit))
-            {
-                this.exit = true;
-            }
 
             if (nextTile.moveable.GetType() == typeof(Diamond) || nextTile.moveable.GetType() == typeof(TNT))
             {
@@ -83,9 +79,18 @@ namespace BoulderDash2019.Models
                 removeTileY = -1;
             }
             
-            nextTile.moveable = this;
-            moveableOnTile.moveable = new BlankTile();
-            moveableOnTile = nextTile;
+            
+            if (nextTile.moveable.GetType() != typeof(Exit))
+            {
+                this.exit = false;
+                nextTile.moveable = this;
+                moveableOnTile.moveable = new BlankTile();
+                moveableOnTile = nextTile;
+            }
+            else
+            {
+                this.exit = true;
+            }
         }
         public override bool letCrush()
         {

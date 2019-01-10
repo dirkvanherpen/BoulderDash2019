@@ -8,16 +8,27 @@ namespace BoulderDash2019.Views
 {
     class EndView
     {
-        public static void EndScreen(int score, bool win)
+        public static void EndScreenVictory(int score)
         {
             Console.Clear();
-            Console.WriteLine("┌───────────────────────────────┐");
-            Console.WriteLine(" U heeft " + win + "!            ");
+            Console.WriteLine("┌─────────────────────────────────┐");
+            Console.WriteLine(" U heeft gewonnen!            ");
             Console.WriteLine("                                ");
             Console.WriteLine(" U heeft " + score + " punten behaald");
+            Console.WriteLine("                                ");
+            Console.WriteLine(" Druk op een toets om terug te keren");
             Console.WriteLine("└─────────────────────────────────┘");
             Console.WriteLine();
-            Console.WriteLine("s = stop");
+        }
+
+        public static void EndScreenDefeat()
+        {
+            Console.Clear();
+            Console.WriteLine("┌─────────────────────────────────┐");
+            Console.WriteLine(" U heeft verloren! :(            ");
+            Console.WriteLine(" Druk op een toets om terug te keren");
+            Console.WriteLine("└─────────────────────────────────┘");
+            Console.WriteLine();
         }
     }
 }
