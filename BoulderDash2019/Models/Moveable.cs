@@ -32,42 +32,34 @@ namespace BoulderDash2019.Models
 
         public void MoveFlies()
         {
-            bool didMove = false;
-            while (!didMove)
+            switch (moveableOnTile.moveable.direction)
             {
-                switch (moveableOnTile.moveable.direction)
-                {
                     case "up":
                         if (moveableOnTile.tileToLeft.moveable.letCrush()) { MoveLeft(); }
                         else if (moveableOnTile.tileToTop.moveable.letCrush()) { MoveUp(); }
                         else if (moveableOnTile.tileToRight.moveable.letCrush()) { MoveRight(); }
-                        else { MoveDown(); }
-                        didMove = true;
+                        else if (moveableOnTile.tileToBottom.moveable.letCrush())  { MoveDown(); }
                         break;
                     case "left":
                         if (moveableOnTile.tileToBottom.moveable.letCrush()) { MoveDown(); }
                         else if (moveableOnTile.tileToLeft.moveable.letCrush()) { MoveLeft(); }
                         else if (moveableOnTile.tileToTop.moveable.letCrush()) { MoveUp(); }
-                        else { MoveRight(); }
-                        didMove = true;
+                        else if (moveableOnTile.tileToRight.moveable.letCrush()) { MoveRight(); }
                         break;
                     case "right":
                         if (moveableOnTile.tileToTop.moveable.letCrush()) { MoveUp(); }
                         else if (moveableOnTile.tileToRight.moveable.letCrush()) { MoveRight(); }
                         else if (moveableOnTile.tileToBottom.moveable.letCrush()) { MoveDown(); }
-                        else { MoveLeft(); }
-                        didMove = true;
+                        else if(moveableOnTile.tileToLeft.moveable.letCrush())  { MoveLeft(); }
                         break;
                     case "down":
                         if (moveableOnTile.tileToRight.moveable.letCrush()) { MoveRight(); }
                         else if (moveableOnTile.tileToBottom.moveable.letCrush()) { MoveDown(); }
                         else if (moveableOnTile.tileToLeft.moveable.letCrush()) { MoveLeft(); }
-                        else { MoveUp(); }
-                        didMove = true;
+                        else if (moveableOnTile.tileToTop.moveable.letCrush()) { MoveUp(); }
                         break;
                     default:
                         break;
-                }
             }
         }
 

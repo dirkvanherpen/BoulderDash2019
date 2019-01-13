@@ -52,7 +52,6 @@ namespace BoulderDash2019.Controllers
                         retry = true;
                         break;
                 }
-             
             }
         }
 
@@ -154,11 +153,6 @@ namespace BoulderDash2019.Controllers
                         var itemToRemove = currentLevel.slideables.Single(r => r.moveableOnTile.x == currentLevel.rockford.removeTileX && r.moveableOnTile.y == currentLevel.rockford.removeTileY);
                         currentLevel.slideables.Remove(itemToRemove);
                     }
-
-
-                    /*
-                     *  -	Maak firefly met behaviour (eerst links vannuit de richting waar hij heen gaat)
-                     */
 
                     moveFireflies();
 

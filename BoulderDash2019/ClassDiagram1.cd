@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BoulderDash2019.Controllers.LevelController" Collapsed="true">
+    <Position X="17.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAEAAAAAEBAQIAQAAAAEAAAAAhQwAACAAAAA=</HashCode>
+      <FileName>Controllers\LevelController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LevelData" Collapsed="true">
+    <Position X="19.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAACAAAAAAAABAAEAAAAAAAA=</HashCode>
+      <FileName>Level\LevelData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash2019.Models.BlankTile" Collapsed="true">
+    <Position X="16.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAIAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\BlankTile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash2019.Models.Boulder" Collapsed="true">
+    <Position X="20.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAABCAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Boulder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash2019.Models.Crush" Collapsed="true">
+    <Position X="9.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Crush.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash2019.Models.Crushable" Collapsed="true">
+    <Position X="16" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Crushable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash2019.Models.Diamond" Collapsed="true">
+    <Position X="18.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Diamond.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash2019.Models.EmptyTile" Collapsed="true">
+    <Position X="13.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\EmptyTile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash2019.Models.Exit" Collapsed="true">
+    <Position X="23.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Exit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash2019.Models.Firefly" Collapsed="true">
+    <Position X="11.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAIAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Firefly.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash2019.Models.HardenedMud" Collapsed="true">
+    <Position X="18" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\HardenedMud.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash2019.Models.Level" Collapsed="true">
+    <Position X="21" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAEQAAAAAAAAAEAAAAAAAAAgAAAAAAAABABAQAAAA=</HashCode>
+      <FileName>Models\Level.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash2019.Models.Moveable" Collapsed="true">
+    <Position X="18.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIEBgAAAAAAAIAAIBBCAAAAAIAAAAAAIQAAQAAAAAAA=</HashCode>
+      <FileName>Models\Moveable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash2019.Models.Mud" Collapsed="true">
+    <Position X="25.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Mud.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash2019.Models.Player" Collapsed="true">
+    <Position X="14.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAwAAAIAAEAAIAACAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Models\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash2019.Models.Slideable" Collapsed="true">
+    <Position X="20" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAEAAAAAAAABAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Models\Slideable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash2019.Models.Steelwall" Collapsed="true">
+    <Position X="22" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Steelwall.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash2019.Models.Tile" Collapsed="true">
+    <Position X="13.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAIAAAAAAAAAJAAAAAEAAAAAgCBgAAAAAAA=</HashCode>
+      <FileName>Models\Tile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash2019.Models.TNT" Collapsed="true">
+    <Position X="23" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAACAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\TNT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash2019.Models.Wall" Collapsed="true">
+    <Position X="14" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Wall.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash2019.Views.EndView" Collapsed="true">
+    <Position X="17.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Views\EndView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash2019.Views.GameView" Collapsed="true">
+    <Position X="19.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\GameView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="BoulderDash2019.Enum.Movement" Collapsed="true">
+    <Position X="17.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAACACAAAAAAAI=</HashCode>
+      <FileName>Enum\Movement.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
